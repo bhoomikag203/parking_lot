@@ -7,11 +7,8 @@ import (
 func TestParkingLot(t *testing.T) {
 	t.Run("parking lot with given capacity", func(t *testing.T) {
 		capacity, _ := ParkingLot(2)
-		want := 2
 
-		if capacity != want {
-			t.Errorf("capacity is %d but want %d", capacity, want)
-		}
+		assertCapacity(t, capacity, 2)
 
 	})
 
@@ -25,4 +22,12 @@ func TestParkingLot(t *testing.T) {
 
 	})
 
+}
+
+func assertCapacity(t *testing.T, capacity int, want int) {
+	t.Helper()
+
+	if capacity != want {
+		t.Errorf("capacity is %d but want %d", capacity, want)
+	}
 }
