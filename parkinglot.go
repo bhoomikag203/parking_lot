@@ -16,3 +16,10 @@ func (p *parkingLot) Park(vehicle string) {
 func (p *parkingLot) Unpark(vehicle string) {
 	p.occupied -= 1
 }
+
+func (p *parkingLot) IsFull() bool {
+	if p.occupied == p.capacity {
+		return true
+	}
+	return false
+}
