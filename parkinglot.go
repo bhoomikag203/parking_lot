@@ -12,3 +12,7 @@ func (p parkingLot) NewParkingLot(capacity int) parkingLot {
 func (p *parkingLot) Park(vehicle string) {
 	p.occupied += 1
 }
+
+func (p *parkingLot) Unpark(vehicle string) {
+	p.occupied -= 1
+}

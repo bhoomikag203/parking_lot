@@ -16,7 +16,7 @@ func TestNewParkingLot(t *testing.T) {
 
 func TestPark(t *testing.T) {
 	t.Run("to park one vehicle", func(t *testing.T) {
-		pl := parkingLot{capacity: 10, occupied: 0}
+		pl := parkingLot{capacity: 1, occupied: 0}
 
 		pl.Park("vehicle1")
 
@@ -34,4 +34,19 @@ func TestPark(t *testing.T) {
 			t.Errorf("Couldn't park a vehicle. got %v want %v", pl.occupied, 1)
 		}
 	})*/
+}
+
+func TestUnpark(t *testing.T) {
+
+	t.Run("to be able to unpark a vehicle", func(t *testing.T) {
+		pl := parkingLot{capacity: 1, occupied: 0}
+		pl.Park("vehicle1")
+
+		pl.Unpark("vehicle1")
+
+		if pl.occupied != 0 {
+			t.Errorf("could not unpark")
+		}
+	})
+
 }
