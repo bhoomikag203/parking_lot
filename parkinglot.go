@@ -1,12 +1,14 @@
 package main
 
-import (
-	"errors"
-)
+type parkingLot struct {
+	capacity int
+	occupied int
+}
 
-func ParkingLot(capacity int) (int, error) {
-	if capacity < 0 {
-		return capacity, errors.New("capacity cannot be negative")
-	}
-	return capacity, nil
+func (p parkingLot) NewParkingLot(capacity int) parkingLot {
+	return p
+}
+
+func (p *parkingLot) Park(vehicle string) {
+	p.occupied += 1
 }

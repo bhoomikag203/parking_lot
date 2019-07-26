@@ -4,30 +4,34 @@ import (
 	"testing"
 )
 
-func TestParkingLot(t *testing.T) {
-	t.Run("parking lot with given capacity", func(t *testing.T) {
-		capacity, _ := ParkingLot(2)
+func TestNewParkingLot(t *testing.T) {
+	got := parkingLot{capacity: 10, occupied: 0}
+	want := parkingLot{10, 0}
 
-		assertCapacity(t, capacity, 2)
-
-	})
-
-	t.Run("raise an error when capacity is negative", func(t *testing.T) {
-		_, err := ParkingLot(-1)
-		want := "capacity cannot be negative"
-
-		if err.Error() != want {
-			t.Errorf("got %q, want %q", err, want)
-		}
-
-	})
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
 
 }
 
-func assertCapacity(t *testing.T, capacity int, want int) {
-	t.Helper()
+func TestPark(t *testing.T) {
+	t.Run("to park one vehicle", func(t *testing.T) {
+		pl := parkingLot{capacity: 10, occupied: 0}
 
-	if capacity != want {
-		t.Errorf("capacity is %d but want %d", capacity, want)
-	}
+		pl.Park("vehicle1")
+
+		if pl.occupied != 1 {
+			t.Errorf("Couldn't park a vehicle. got %v want %v", pl.occupied, 1)
+		}
+	})
+
+	/*t.Run("should not park a vehicle w", func(t *testing.T) {
+		pl := parkingLot{capacity: 10, occupied: 0}
+
+		pl.Park("vehicle1")
+
+		if pl.occupied != 1 {
+			t.Errorf("Couldn't park a vehicle. got %v want %v", pl.occupied, 1)
+		}
+	})*/
 }
